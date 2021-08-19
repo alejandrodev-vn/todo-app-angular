@@ -1,0 +1,22 @@
+.toggle-completed {
+  appearance: none;
+  + label {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+  }
+}
+.actions {
+  opacity: 0;
+  transition: 0.15s ease-in-out;
+  &.active {
+    opacity: 1;
+  }
+}
+.item {
+  border-bottom: 1px solid rgb(160, 159, 159);
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}

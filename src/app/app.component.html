@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 m-auto mt-5">
+      <h1 class="mb-3">Todo App</h1>
+      <app-header *ngIf="hasTodo$ | async"></app-header>
+      <app-todo-list></app-todo-list>
+      <app-button-add></app-button-add>
+    </div>
+  </div>
+</div>

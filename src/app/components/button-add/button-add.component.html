@@ -1,0 +1,8 @@
+<button 
+  mat-raised-button class="mt-2" 
+  (click)="handleClickToDisplay()" 
+  [color]="colorTextBtn"
+>
+  {{textBtn}}
+</button>
+<app-todo-input [isShow]="isShow"></app-todo-input>

@@ -1,0 +1,30 @@
+<li
+  class="item flex flex-row items-center justify-between"
+  (mouseover)="isHovered = true"
+  (mouseout)="isHovered = false"
+  style="width:100%"
+>
+  <div style="width:70%" class="flex flex-row items-center pe-2">
+    <input type="checkbox" class="toggle-completed"  #checkboxComplete />
+    <label for="checkboxComplete" (click)="item.isCompleted = !item.isCompleted" >
+      <mat-icon *ngIf="item.isCompleted" class="material-icons-outlined" color="primary">check_circle</mat-icon>
+      <mat-icon *ngIf="!item.isCompleted" class="material-icons-outlined">
+        radio_button_unchecked
+      </mat-icon>
+    </label>
+    <span class="ps-2" *ngIf="!isEditing">{{item.content}}</span>
+    <form *ngIf="isEditing" class="ps-2" style="width:100%">
+      <input type="text" value="Todo item" style="width:100%" name="editTodoContent" [(ngModel)]="item.content">
+    </form>
+  </div>
+  <div class="actions flex flex-row justify-end" style="width:30%;" [ngClass]="{'active': isHovered}" >
+    <mat-icon
+      (click)="isEditing = !isEditing" style="cursor: pointer;"
+      aria-hidden="false" color="primary"
+    >
+      mode_edit
+    </mat-icon>
+    <mat-icon aria-hidden="false" style="cursor: pointer;" color="warn">cancel</mat-icon>
+  </div>
+
+</li>

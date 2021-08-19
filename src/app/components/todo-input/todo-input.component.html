@@ -1,0 +1,23 @@
+<form class="example-form" class="mt-3" *ngIf="isShow">
+  <mat-form-field class="example-full-width" appearance="fill" style="width:50%">
+    <mat-label>New Todo</mat-label>
+    <input
+      type="text"
+      matInput
+      [formControl]="todoFormControl"
+      [errorStateMatcher]="matcher"
+      placeholder="Wake up"
+      style="width:500px"
+      (keyup.enter)="onSubmit()"
+    >
+    <mat-hint style="display:flex;align-items: center; color: green;">
+      Invalid
+      <span class="material-icons">
+        done
+      </span>
+    </mat-hint>
+    <mat-error *ngIf="todoFormControl.hasError('required')">
+      Todo is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
