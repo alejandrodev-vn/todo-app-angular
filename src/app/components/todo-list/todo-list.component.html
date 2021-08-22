@@ -1,5 +1,13 @@
 <div class="mat-elevation-z8 p-4">
-  <ul class="flex flex-col" style="list-style: none;" *ngFor="let item of todos$ | async">
-    <app-todo-item [item]="item" style="width:100%"></app-todo-item>
+  <ul
+    class="flex flex-col"
+    style="list-style: none"
+    *ngFor="let item of todos$ | async"
+  >
+    <app-todo-item
+      [item]="item"
+      style="width: 100%"
+      (changeStatus)="onChangeTodoStatus($event)"
+    ></app-todo-item>
   </ul>
 </div>
