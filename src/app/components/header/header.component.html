@@ -1,9 +1,10 @@
-<button 
-  mat-raised-button 
-  class="m-2" 
-  [ngClass]="{'active' : btn.isActive}" 
-  *ngFor="let btn of filterButtons" 
-  color="{{btn.isActive ? 'accent' : ''}}"
+<button
+  mat-raised-button
+  class="m-2"
+  [ngClass]="{ active: btn.isActive }"
+  *ngFor="let btn of filterButtons"
+  color="{{ btn.isActive ? 'accent' : '' }}"
+  (click)="filter(btn.type)"
 >
-  {{btn.label}}
+  {{ btn.label }}
 </button>

@@ -28,7 +28,8 @@ export class TodoService {
   fetchFromLocalStorage() {
     this.todos =
       this.storageService.getValue<Todo[]>(TodoService.TodoStorageKey) || [];
-    this.filteredTodos = [...this.todos.map((todo) => ({ ...todo }))];
+    // this.filteredTodos = [...this.todos.map((todo) => ({ ...todo }))];
+    this.filteredTodos = [...this.todos];
     this.updateTodosData();
   }
 
@@ -52,6 +53,36 @@ export class TodoService {
     this.todos.splice(index, 1, todo);
     this.updateToLocalStorage();
   }
+  changeTodoContent(id: number, content: string) {
+    const index = this.todos.findIndex((todo) => todo.id === id);
+    const todo = this.todos[index];
+    todo.content = content;
+    this.todos.splice(index, 1, todo);
+    this.updateToLocalStorage();
+  }
+  deleteTodo(id: number) {
+    const index = this.todos.findIndex((todo) => todo.id === id);
+    this.todos.splice(index, 1);
+    this.updateToLocalStorage();
+  }
+  toggleAll() {
+    this.todos = this.todos.map((todo) => {
+      return {
+        ...todo,
+        isCompleted: !this.todos.every((todo) => todo.isCompleted),
+      };
+    });
+    this.updateToLocalStorage();
+  }
+  clearCompleted() {
+    this.todos = this.todos.map((todo) => {
+      return {
+        ...todo,
+        isCompleted: !this.todos.some((todo) => todo.isCompleted),
+      };
+    });
+    this.updateToLocalStorage();
+  }
 
   filterTodos(filter: Filter, isFiltering: boolean = true) {
     this.currentFilter = filter;
@@ -66,7 +97,7 @@ export class TodoService {
         this.filteredTodos = this.todos;
         break;
       default:
-        this.filteredTodos = [...this.todos.map((todo) => ({ ...todo }))];
+        this.filteredTodos = [...this.todos];
         break;
     }
 

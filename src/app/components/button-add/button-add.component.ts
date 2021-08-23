@@ -3,23 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-button-add',
   templateUrl: './button-add.component.html',
-  styleUrls: ['./button-add.component.scss']
+  styleUrls: ['./button-add.component.scss'],
 })
 export class ButtonAddComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
+  isShow: boolean = false;
+  textBtn: string = 'Add new';
+  colorTextBtn: string = 'accent';
 
-  isShow:boolean = false;
-  textBtn:string = 'Add new';
-  colorTextBtn:string = 'accent'
-  handleClickToDisplay(){
+  handleClickToDisplay() {
     this.isShow = !this.isShow;
     this.textBtn = !this.isShow ? 'Add new' : 'Hide';
-    this.colorTextBtn =  !this.isShow ? 'accent' : 'primary';
-
+    this.colorTextBtn = !this.isShow ? 'accent' : 'primary';
   }
-
 }

@@ -1,1 +1,22 @@
-<p>footer works!</p>
+<span>{{ length }} item{{ length > 1 ? "s" : "" }}</span>
+<div>
+  <button
+    mat-raised-button
+    class="mt-2 mb-4 me-2"
+    (click)="toggleAll()"
+    color="primary"
+    [disabled]="completedAll$ | async"
+  >
+    Complete all
+    <mat-icon class="material-icons-outlined">done_all</mat-icon>
+  </button>
+  <button
+    mat-raised-button
+    class="mt-2"
+    color="accent"
+    [disabled]="!(hasCompleted$ | async)"
+    (click)="clearCompleted()"
+  >
+    Clear Completed
+  </button>
+</div>

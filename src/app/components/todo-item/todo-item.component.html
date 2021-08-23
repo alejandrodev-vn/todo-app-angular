@@ -8,34 +8,39 @@
     <input
       type="checkbox"
       class="toggle-completed"
-      [ngClass]="{ checked: item.isCompleted }"
-      [id]="item.id"
+      [ngClass]="{ checked: todo.isCompleted }"
+      [id]="todo.id"
       (change)="changeTodoStatus()"
     />
-    <label [for]="item.id">
+    <label [for]="todo.id">
       <mat-icon
-        *ngIf="item.isCompleted"
+        *ngIf="todo.isCompleted"
         class="material-icons-outlined"
         color="primary"
         >check_circle</mat-icon
       >
-      <mat-icon *ngIf="!item.isCompleted" class="material-icons-outlined">
+      <mat-icon *ngIf="!todo.isCompleted" class="material-icons-outlined">
         radio_button_unchecked
       </mat-icon>
     </label>
     <span
       class="item__content ps-2"
       *ngIf="!isEditing"
-      [ngClass]="{ checked: item.isCompleted }"
-      >{{ item.content }}</span
+      [ngClass]="{ checked: todo.isCompleted }"
+      [@fadeStrikeThrough]="todo.isCompleted ? 'completed' : 'active'"
+      >{{ todo.content }}</span
     >
-    <form *ngIf="isEditing" class="ps-2" style="width: 100%">
+    <form
+      *ngIf="isEditing"
+      class="ps-2"
+      style="width: 100%"
+      (submit)="submitEdit($event)"
+    >
       <input
         type="text"
-        value="Todo item"
         style="width: 100%"
         name="editTodoContent"
-        [(ngModel)]="item.content"
+        [(ngModel)]="todo.content"
       />
     </form>
   </div>
@@ -49,10 +54,15 @@
       style="cursor: pointer"
       aria-hidden="false"
       color="primary"
+      *ngIf="!todo.isCompleted"
     >
       mode_edit
     </mat-icon>
-    <mat-icon aria-hidden="false" style="cursor: pointer" color="warn"
+    <mat-icon
+      aria-hidden="false"
+      style="cursor: pointer"
+      color="warn"
+      (click)="handleDeleteTodo()"
       >cancel</mat-icon
     >
   </div>

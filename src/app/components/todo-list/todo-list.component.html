@@ -2,12 +2,18 @@
   <ul
     class="flex flex-col"
     style="list-style: none"
-    *ngFor="let item of todos$ | async"
+    *ngFor="let todo of todos$ | async"
   >
     <app-todo-item
-      [item]="item"
+      [todo]="todo"
       style="width: 100%"
       (changeStatus)="onChangeTodoStatus($event)"
+      (changeContent)="onChangeTodoContent($event)"
+      (deleteTodo)="onDeleteTodo($event)"
     ></app-todo-item>
   </ul>
+  <app-footer
+    class="flex flex-row justify-content-between align-items-center"
+    *ngIf="hasTodo$ | async"
+  ></app-footer>
 </div>

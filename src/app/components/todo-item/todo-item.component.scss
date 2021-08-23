@@ -19,9 +19,14 @@
   border-bottom: 1px solid rgb(160, 159, 159);
   margin-bottom: 5px;
   padding-bottom: 5px;
-  &__content {
-    &.checked {
-      text-decoration: line-through;
-    }
-  }
+  font-size: 18px;
+  color: black;
+  // &__content {
+  //   &.checked {
+  //     text-decoration: line-through;
+  //     font-size: 17px;
+  //     color: lightgrey;
+  //     transition: 0.3s ease-in-out;
+  //   }
+  // }
 }

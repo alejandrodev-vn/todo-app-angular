@@ -29,7 +29,7 @@ import { ButtonAddComponent } from './components/button-add/button-add.component
     TodoInputComponent,
     HeaderComponent,
     FooterComponent,
-    ButtonAddComponent
+    ButtonAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +44,9 @@ import { ButtonAddComponent } from './components/button-add/button-add.component
     MatCheckboxModule,
     MatListModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
